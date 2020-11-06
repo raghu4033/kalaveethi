@@ -1,0 +1,177 @@
+{% extends 'student_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Kalaveethi :: Student:: Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+        <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+  {% for n in leavelist %}
+     <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-12 mb-2">
+              <div class="card border-left-danger  shadow mb-5 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="h5 text-md font-weight-bold text-primary text-uppercase mb-2">{{n.sname}}</div>
+                      <div class="mb-0 font-weight-bold text-gray-800">{{n.registration_id}}
+                      </div>
+                      <div class="mb-0 text-sm text-uppercase font-weight-bold text-gray-800">
+                        {{n.course}}
+                      </div>
+                    </div>
+                    <div class="col-auto mr-5">
+                      {{n.leave_day}}&nbsp;Days
+                    </div>
+                    <div class="col-auto mr-5">
+                      {{n.Leave_catagory}}
+                    </div>
+                    <div class="col-auto mr-4">
+                      {{n.leavedate}}
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto mt-2 mb-3">
+                      {{n.leave_reason}}
+                </div>
+                <div class="row m-2">
+                  <div class="col-md-12 d-inline">
+                    <form  class="user" method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="form-group"> 
+                          <input type="submit" name="" class="btn btn-primary btn-user btn-block " value="{{n.status}}">
+                        </div>
+                    </form>
+              </div>
+            </div>
+    </div>
+  {% endfor %}
+
+  <form  class="user" method="POST" action="{% url 'Insert_Suggestion' %}" enctype="multipart/form-data">
+  {% csrf_token %}     
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-2 "></div>
+          <div class="col-lg-8 col-lg-ofset-2">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Student Suggestions</h1>
+                      <center>
+                      <div class="form-group" style="color: red; font-weight: 500">
+                      {% if msg %}
+                          {{msg}}
+                      {% endif %}
+                      </div>
+                      <br>
+                      </center>
+              </div>
+                <div class="form-group">
+                  <textarea type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Suggestions" name="suggestion" required="required"></textarea>
+                </div> 
+                 <input type="submit" name="" class="btn btn-primary btn-user btn-block" value="Submit">  
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+   {% for s in suggestionlist %}
+   <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-12 mb-2 p-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{s.suggestion_msg}}</div>
+                    </div>
+                    <div class="col-auto mr-4">
+                      <span>{{s.suggestion_date}}</span>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>   
+    {% endfor %} 
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to Log Out Your Account.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'student_logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+{% endblock content %}
+
+</body>
+
+</html>

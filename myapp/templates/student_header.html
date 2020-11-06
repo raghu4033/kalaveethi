@@ -1,0 +1,410 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Kalaveethi Student</title>
+  <link rel='icon' href="{% static 'images/logo .png' %}" type='image/x-icon' sizes="16x16" />
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'student_dashboard' %}">
+        <div class="sidebar-brand-icon mr-2">
+          <img class="p-1" src="{% static 'images/Im_logo.png' %}" height="70px" width="70px"></img>
+        </div>
+        <!-- <div class="sidebar-brand-text mx-3">Kalaveethi</div> -->
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'student_dashboard' %}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Student Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Profile
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-user-alt"></i>
+          <span>Students Profile</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Student Profile:</h6>
+            <a class="collapse-item" href="{% url 'student_profile' %}">Students Profile</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+  
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Attendece
+      </div>
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Attendece" aria-expanded="true" aria-controls="collapseTwo-Attendece">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>Attendece</span>
+        </a>
+        <div id="collapseTwo-Attendece" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Student Attendece:</h6>
+            <a class="collapse-item" href="{% url 'student_attendence' %}">Attendece</a>
+          </div>
+        </div>
+      </li>
+
+    <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Leave   
+      </div>
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Leave" aria-expanded="true" aria-controls="collapseTwo-Leave">
+          <i class="fab fa-wpforms"></i>
+          <span>Student Leave</span>
+        </a>
+        <div id="collapseTwo-Leave" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Student Leave:</h6>
+            <a class="collapse-item" href="{% url 'student_leave' %}">Student Leave</a>
+            <a class="collapse-item" href="{% url 'leave_request_status' %}">Leave Request Status</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+       <div class="sidebar-heading">
+        Student Fees
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Attendence" aria-expanded="true" aria-controls="collapseTwo-Attendence">
+          <i class="fas fa-money-check"></i>
+          <span>Fees </span>
+        </a>
+        <div id="collapseTwo-Attendence" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Fees Detaile</h6>
+            <a class="collapse-item" href="{% url 'student_fees_detaile' %}">Fees Informations</a>
+            <a class="collapse-item" href="{% url 'pay_fees' %}">Pay fees</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+       <div class="sidebar-heading">
+        Event
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Events" aria-expanded="true" aria-controls="collapseTwo-Events">
+          <i class="fas fa-calendar-day"></i>
+          <span>Event </span>
+        </a>
+        <div id="collapseTwo-Events" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Event Detaile</h6>
+            <a class="collapse-item" href="{% url 'student_event' %}">Events</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+       <div class="sidebar-heading">
+        Holiday
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Holiday" aria-expanded="true" aria-controls="collapseTwo-Holiday">
+          <i class="far fa-window-restore"></i>
+          <span>Holiday </span>
+        </a>
+        <div id="collapseTwo-Holiday" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Holiday Detaile</h6>
+            <a class="collapse-item" href="{% url 'student_holiday' %}">Holiday</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+       <div class="sidebar-heading">
+        Notice Bord
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-notice" aria-expanded="true" aria-controls="collapseTwo-notice">
+          <i class="fas fa-flag"></i>
+          <span>Notice</span>
+        </a>
+        <div id="collapseTwo-notice" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Notice</h6>
+            <a class="collapse-item" href="{% url 'student_notice_board' %}">Notice Board</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Class
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-class" aria-expanded="true" aria-controls="collapseTwo-class">
+          <i class="fas fa-chalkboard"></i>
+          <span>Class</span>
+        </a>
+        <div id="collapseTwo-class" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Class Informations:</h6>
+            <a class="collapse-item" href="{% url 'student_class' %}">Class List</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Submitions
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Sub" aria-expanded="true" aria-controls="collapseTwo-Sub">
+          <i class="fas fa-book"></i>
+          <span>Submitions</span>
+        </a>
+        <div id="collapseTwo-Sub" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Submitions Informations:</h6>
+            <a class="collapse-item" href="{% url 'student_submitions' %}">Submitions</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Student Submitions
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-Suggestion" aria-expanded="true" aria-controls="collapseTwo-Suggestion">
+          <i class="fas fa-clipboard"></i>
+          <span>Suggestion</span>
+        </a>
+        <div id="collapseTwo-Suggestion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Suggestion Informations:</h6>
+            <a class="collapse-item" href="{% url 'Insert_Suggestion' %}">Suggestion</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Logout
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo-logout" aria-expanded="true" aria-controls="collapseTwo-Sub">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+        <div id="collapseTwo-logout" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">logout</h6>
+            <a class="collapse-item" href="{% url 'student_logout' %}">Sure You Went Logout</a>
+          </div>
+        </div>
+      </li>
+  
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div>
+             <img class="img-fluid ml-2 p-1" height="100px" width="250px;" alt="Responsive image" height="" src="{% static 'images/header_logopng.png' %}">
+          </div>
+          <!-- Topbar Search -->
+         <!--  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+ -->
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle mr-3" src="{{request.session.photo}}">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Wel Come {{request.session.fname}}</span>
+                <button href="#" class="btn btn-primary ml-1" data-toggle="modal" data-target="#logoutModal-2" type="button" >Log out
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                </button>
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}" data-toggle="modal" data-target="#logoutModal-2">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        
+        <!-- Scroll to Top Button-->
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to Log Out Your Account.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'student_logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+  <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+{% block content %}
+{% endblock content %}
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+{% extends 'Admin_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>- Blank</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+           <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-12">
+              <div class="card border-left-primary shadow  py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-lg text-center font-weight-bold text-primary text-uppercase mb-1">STUDENT INFORMATIONS
+                      </div>
+                      <center>
+                      <div class="form-group" style="color: red; font-weight: 500">
+                      {% if msg %}
+                          {{msg}}
+                      {% endif %}
+                      </div>
+                      <br>
+                      </center>
+                      <hr>
+                    <div>
+                    <div class="col m-2">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Name</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.fname}}&nbsp;{{student.lname}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Gender</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.gender}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Student Id</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.registration_id}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Phone</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.mobile}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Course</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.course}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Email</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase mb-1">{{student.email}}
+                      </div>
+                    </div>
+                    <div class="col m-2 mt-3">
+                      <div class="text-sm mb-0 font-weight-bold text-gray-800">Batch</div>
+                      <div class="text-ms font-weight-bold text-primary text-uppercase">{{student.batch}}
+                      </div>
+                    </div>
+
+                     <form  class="user" method="POST" action="{% url 'add_installment' %}" enctype="multipart/form-data">
+                     {% csrf_token %}
+                    <div class="form-group row">
+                      <div class="col-sm-6">
+                        <input type="hidden" name="sid" value="{{student.registration_id}}">
+
+                        <input type="submit" class="btn btn-primary form-control form-control-user" value="Add installment" id="exampleFirstName" name="add_instalment">
+                      </div>
+                      </form>
+                       
+                      <div class="col-sm-6">
+                        <form  class="user" method="POST" action="{% url 'add_remaining_ins' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="sid" value="{{student.registration_id}}">
+
+                        <input type="submit" class="btn btn-primary form-control form-control-user" value="Add remaining installment" id="exampleLastName" name="add_remaining_ins">
+                      </div>
+                    </div>
+                  </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mt-3">
+            <div class="card-header py-3">
+              <h6 class="mt-2  text-center h3 font-weight-bold text-primary">Paid Installment Detail</h6>
+            </div>
+                      <center>
+                      <div class="form-group" style="color: red; font-weight: 500">
+                      {% if feesmsg %}
+                          {{feesmsg}}
+                      {% endif %}
+                      </div>
+                      <br>
+                      </center>
+                      <hr>
+
+            <div class="card-body shadow">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>SID</th>
+                      <th>installment No</th>
+                      <th>Amount</th>
+                      <th>Payment Date</th>
+                      <th>payment Type</th>
+                      <th>Recipt No</th>
+                      <th>Recipt</th>
+                    </tr>
+                  </thead>
+              {% for f in fees %}
+                  <tfoot>
+                    <tr>
+                      <th>{{f.registration_id}}</th>
+                      <th>{{f.installment_no}}</th>
+                      <th>{{f.amount}}</th>
+                      <th>{{f.payment_date}}</th>
+                      <th>{{f.payment_type}}</th>
+                      <th>{{f.recipt_no}}</th>
+                      <th>
+                      <div class="form-group"> 
+                          <form class="user"> 
+                          <a class="btn btn-primary btn-user btn-block" href="{{f.recipt.url}}" download>Download</a>
+                           </form>
+                          </div>
+                      </th>
+                    </tr>
+                  </tfoot>
+              {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        <!-- End of Main Content -->
+
+        <div class="card shadow mt-3">
+            <div class="card-header py-3">
+              <h6 class="mt-2  text-center h3 font-weight-bold text-primary">Remaining Installment Detail</h6>
+            </div>
+                      <center>
+                      <div class="form-group" style="color: red; font-weight: 500">
+                      {% if rem_feesmsg %}
+                          {{rem_feesmsg}}
+                      {% endif %}
+                      </div>
+                      <br>
+                      </center>
+                      <hr>
+
+            <div class="card-body shadow">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Installment</th>
+                      <th>Amount</th>
+                      <th>Payment Date</th>
+                    </tr>
+                  </thead>
+              {% for rf in rem_fees %}
+                  <tfoot>
+                    <tr>
+                      <th>{{rf.installment_no}}</th>
+                      <th>{{rf.amount}}</th>
+                      <th>{{rf.payment_date}}</th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+              {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+    <!-- End of Content Wrapper -->
+
+            
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to Log Out Your Account.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+{% endblock content %}
+
+</body>
+
+</html>

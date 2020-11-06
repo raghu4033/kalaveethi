@@ -1,0 +1,106 @@
+{% extends 'Admin_header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+{% block content %}
+	<center>
+	<h1>STUDENT REGISRATION</h1>
+    <div class="form-group" style="color: red; font-weight: 500">
+        {% if msg %}
+          	{{msg}}
+        {% endif %}
+    </div>
+    <br>
+    </center>
+	<div style="width: 30%; border: 2px solid gray; border-radius: 10px; margin-left: 470px; padding: 20px; font-weight: 500;">
+    <form method="POST" action="{% url 'Student_Registration' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+      <div class="form-group">
+    		<label>FIRST NAME</label>
+    		<input type="text" class="form-control" placeholder="Enter Name" name="fname">
+  		</div>
+  		<div class="form-group">
+    		<label>LAST NAME</label>
+    		<input type="text" class="form-control" placeholder="Enter Name" name="lname">
+  		</div>
+  		<div class="form-group">
+    		<label>FATHER NAME</label>
+    		<input type="text" class="form-control" placeholder="Enter father_name " name="father_name">
+  		</div>
+  		<div class="form-group">
+    		<label>EMAIL</label>
+    		<input type="text" class="form-control" placeholder="Enter Email" name="email" required="required">
+  		</div>
+  		<div class="form-group">
+    		<label>MOBILE</label>
+    		<input type="text" class="form-control" placeholder="Enter Mobile" name="mobile">
+  		</div>
+  		<div class="form-group">
+    		<label>FATHER MOBILE</label>
+    		<input type="text" class="form-control" placeholder="Enter Father Mobile" name="father_mobile">
+  		</div>
+  		<div class="form-group">
+    		<label>DOB</label>
+    		<input type="date" class="form-control" placeholder="Enter DOB" name="dob">
+  		</div>
+  		<div class="form-group">
+    		<label>CAST</label>
+    		<input type="text" class="form-control" placeholder="Enter CAST" name="cast">
+  		</div>
+  		<div class="form-group">
+        	<label>GENDER</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="gender" value="male" >male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="gender" value="female">female
+      	</div>
+      	<div class="form-group">
+       		<label>ADDRESS</label>
+        	<textarea class="form-control" name="address" rows="2">ADDRESS</textarea>
+      	</div>
+      	<div class="form-group">
+        	<label>COURSE</label>&nbsp;&nbsp;<br>
+        	<input type="radio" name="course" value="fashion" >Fashion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="course" value="graphics" >Graphics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="course" value="fineart">Fineart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="course" value="textile">Textile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input type="radio" name="course" value="jwellery">Jwellery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	</div>
+  		<div class="form-group">
+    		<label>REGISTRATION ID</label>
+    		<input type="text" class="form-control" placeholder="Enter Registration id" name="registration_id" required="required">
+  		</div>
+  		<div class="form-group">
+    		<label>JOIN DATE</label>
+    		<input type="date" class="form-control" placeholder="Enter Join Date" name="join_date">
+  		</div>
+  		
+      	<div class="form-group">
+        	<label>Photo</label>
+        	<input type="file" class="form-control" placeholder="Select Photo" name="photo">
+      	</div>
+      	<div class="form-group">
+    		<label>PASSWORD</label>
+    		<input type="password" class="form-control" placeholder="Enter Password" name="password">
+  		</div>
+  		<div class="form-group">
+    		<label>CONFIRM PASSWORD</label>
+    		<input type="password" class="form-control" placeholder="Enter Confirm Password" name="cpassword">
+  		</div>
+
+  			<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	</div>
+{% endblock content %}
+</body>
+</html>

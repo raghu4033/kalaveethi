@@ -1,0 +1,45 @@
+{% extends 'Admin_header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+	{% block content %}
+<div class="row">
+		<div id="box" class="col-sm-3">
+			<div class="container">
+		  		<div class="card" style="width:470px;  padding: 10px; border:1px solid gray; border-radius: 10px;">
+		    		<img class="card-img-top" src="{{student.photo.url}}" alt="Card image" style=" height:450px; width:450px; border:1px solid #0a7bd1; padding: 10px; border-radius: 5px;">
+		    			<div class="card-body">
+		      				<h4 class="card-title">{{student.fname}}</h4>
+		      				<h4 class="card-title">{{student.registration_id}}</h4>
+		      				<h5 class="card-title">{{student.course}}</h5>
+		      				<p class="card-text">{{student.lname}}</p>
+		      				<p class="card-text">{{student.father_name}}</p>
+		      				<p class="card-text">{{student.email}}</p>
+		      				<p class="card-text">{{student.mobile}}</p>
+		      				<p class="card-text">{{student.gender}}</p>
+		      				<p class="card-text">{{student.address}}</p>
+		      				<p class="card-text">{{student.dob}}</p>
+		      				<p class="card-text">{{student.join_date}}</p>
+		      				<p class="card-text">{{student.cast}}</p>
+		      				<p class="card-text">{{student.batch}}</p>
+
+			      			<a class="btn btn-primary" href="{% url 'edit_std_detail' pk=student.pk %}">Edit</a>
+		    			</div>
+		  		</div>	  
+			</div>
+		</div>
+	</div>
+	{% endblock content %}
+</body>
+</html>
